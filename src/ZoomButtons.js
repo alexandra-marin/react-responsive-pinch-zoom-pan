@@ -16,22 +16,24 @@ const containerStyle = {
     zIndex: 1000
 };
 
-const ZoomOutButton = ({ disabled, onClick }) => (
+const ZoomOutButton = ({ disabled, onClick, zoomOutComponent }) => (
     <button className='iconButton' style={{ margin: '10px' }} onClick={onClick} disabled={disabled}>
-        <FontAwesomeIcon icon={faMinus} />
+        {zoomOutComponent}
+        {!zoomOutComponent && <FontAwesomeIcon icon={faMinus} />}
     </button>
 );
 
-const ZoomInButton = ({ disabled, onClick }) => (
+const ZoomInButton = ({ disabled, onClick, zoomInComponent }) => (
     <button className='iconButton' style={{ margin: '10px', marginLeft: '0px' }} onClick={onClick} disabled={disabled}>
-        <FontAwesomeIcon icon={faPlus} />
+        {zoomInComponent}
+        {!zoomInComponent && <FontAwesomeIcon icon={faPlus} />}
     </button>
 );
 
-const ZoomButtons = ({ scale, minScale, maxScale, onZoomInClick, onZoomOutClick }) => (
+const ZoomButtons = ({ scale, minScale, maxScale, onZoomInClick, onZoomOutClick, zoomInComponent, zoomOutComponent }) => (
     <div style={containerStyle}>
-        <ZoomOutButton onClick={onZoomOutClick} disabled={scale <= minScale} />
-        <ZoomInButton onClick={onZoomInClick} disabled={scale >= maxScale} />
+        <ZoomOutButton onClick={onZoomOutClick} disabled={scale <= minScale} zoomOutComponent={zoomOutComponent} />
+        <ZoomInButton onClick={onZoomInClick} disabled={scale >= maxScale} zoomInComponent={zoomInComponent} />
     </div>
 );
 
