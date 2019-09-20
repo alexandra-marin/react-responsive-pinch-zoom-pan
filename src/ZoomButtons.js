@@ -6,9 +6,14 @@ import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
 
 import './styles.css';
 
-const containerStyle = { 
-    position: 'absolute', 
-    zIndex: 1000 
+const containerStyle = {
+    position: 'absolute',
+    bottom: 5,
+    left: '50%',
+    right: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: 'fit-content',
+    zIndex: 1000
 };
 
 const ZoomOutButton = ({ disabled, onClick }) => (
@@ -23,7 +28,7 @@ const ZoomInButton = ({ disabled, onClick }) => (
     </button>
 );
 
-const ZoomButtons = ({scale, minScale, maxScale, onZoomInClick, onZoomOutClick}) => (
+const ZoomButtons = ({ scale, minScale, maxScale, onZoomInClick, onZoomOutClick }) => (
     <div style={containerStyle}>
         <ZoomOutButton onClick={onZoomOutClick} disabled={scale <= minScale} />
         <ZoomInButton onClick={onZoomInClick} disabled={scale >= maxScale} />
